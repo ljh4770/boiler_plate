@@ -1,0 +1,5 @@
+#API
+https://data.mongodb-api.com/app/data-pmdzk/endpoint/data/v1
+
+#Driver
+mongodb+srv://JungHwan:<password>@cluster0.oaklg9q.mongodb.net/?retryWrites=true&w=majority
