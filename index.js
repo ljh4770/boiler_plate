@@ -35,5 +35,5 @@ app.post('/register', (req, res) => {
 //.save: method from mongoDB
 //status(200): sign of success
 
-app.listen(port, () => console.log('Example app listening on port ${port}!'))
+app.listen(port, () => console.log(`Example app listening on port ${port}!`))
 // ??? 실행시 포트 번호가 안보임 ${port}로 그대로 표시됨
