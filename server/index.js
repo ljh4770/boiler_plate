@@ -34,7 +34,7 @@ app.post('/api/users/register', (req, res) => {
   const user = new User(req.body)
 
   user.save((err, userInfo) => { 
-    if(err) return res.json({success: false, err})
+    if (err) return res.json({ success: false, err })
     return res.status(200).json({ 
       success: true
     })
@@ -57,7 +57,7 @@ app.post('/api/users/login', (req, res) => {
       if (!isMatch)
        return res.json({loginSucces: false, message: "비밀번호가 틀렸습니다."})
       //if password match, create token.
-      user.generateToken((err,user) => {
+      user.generateToken((err,user) => {"jh47@"
         if(err) return res.status(400).send(err); //status(400): sign of err
           //saving token(ex: cookie, local, session)
           //cookie
