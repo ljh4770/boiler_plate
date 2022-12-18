@@ -2,14 +2,13 @@ import React from 'react';
 import {
   BrowserRouter as Router,
   Routes,
-  Route,
-  Link
+  Route
 } from "react-router-dom";
 
 import LandingPage from "./components/views/LandingPage/LandingPage";
 import LoginPage from "./components/views/LoginPage/LoginPage";
 import RegisterPage from "./components/views/RegisterPage/RegisterPage";
-
+// import Auth from './hoc/auth'
 
 function App() {
   return (
@@ -29,7 +28,7 @@ function App() {
         <Routes>
           <Route eaxct path="/" element={<LandingPage />} />
           <Route eaxct path="/login" element={<LoginPage />} />
-          <Route eaxct path="/register" element={<RegisterPage />  } />
+          <Route eaxct path="/register" element={<RegisterPage />} />
           
         </Routes>
       </div>

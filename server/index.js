@@ -88,15 +88,19 @@ app.get('/api/users/auth', auth, (req, res) => {
 })
 //role이 0이 아니면 관리자
 
-app.get('/api/users/logout', auth, (req, res) =>{
+app.get('/api/users/logout', auth, (req, res) => {
   User.findOneAndUpdate({ _id: req.user._id},
-    { token: ""}
+    { token: "" }
     , (err, user) => {
       if (err) return res.json({ success: false, err});
       return res.status(200).send({
         success: true
       })
     })
+})
+
+app.get("/api/hello",(req, res) =>{
+  res.send("안녕하세요 서버에 연결이 되었습니다!!")
 })
 
 app.listen(port, () => console.log(`Example app listening on port ${port}!`))

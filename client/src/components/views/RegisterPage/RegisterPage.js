@@ -3,6 +3,7 @@ import Axios from 'axios';
 import { useDispatch } from 'react-redux';
 import { registerUser } from '../../../_actions/user_action';
 import { useNavigate } from "react-router-dom";
+import Auth from "../../../hoc/auth.js"
 
 function RegisterPage(props) {
   const dispatch = useDispatch();
@@ -81,4 +82,4 @@ function RegisterPage(props) {
   )
 }
 
-export default RegisterPage
+export default Auth(RegisterPage, false);
