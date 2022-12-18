@@ -1,6 +1,6 @@
-const mongoose = require('mongoose')
+const mongoose = require('mongoose');
 const bcrypt = require('bcrypt');
-const saltRounds = 10
+const saltRounds = 10;
 const jwt = require("jsonwebtoken");
 
 const userSchema = mongoose.Schema({
@@ -10,11 +10,16 @@ const userSchema = mongoose.Schema({
     },
     email: {
         type: String,
-        tirm: true, //delete empty space
+        trim: true, //delete empty space
     },
     password: {
         type: String,
+        minlength: 2
+    },
+    lastname: {
+        type: String,
         maxlength: 50
+
     },
     role: {
         type: Number,
@@ -39,19 +44,19 @@ userSchema.pre('save', function( next ){
 
             bcrypt.hash(user.password, salt, function(err, hash) {
                 if (err) return next(err)
-                user.password = hash
+                user.password = hash;
                 next()
             })
         })
     } else{
-        next()
+        next();
     }
 })
 
 userSchema.methods.comparePassword = function(plainPassword, cb){
     //plain pw: test1         Encryted pw: "$2b$10$knMUhklcMOc8QOySX2EipOxA2cTmi2Vx83MldPVGocECinWOPT.Mm"
     bcrypt.compare(plainPassword, this.password, function(err, isMatch){
-        if(err) return cb(err),
+        if(err) return cb(err)
             cb(null, isMatch)
     })
 }
@@ -61,10 +66,10 @@ userSchema.methods.generateToken = function(cb){
 
     //generate web token bia jsonwebtoken
     var token = jwt.sign(user._id.toHexString(), 'secretToken')
-    user.token = token
-    user.svae(function(err, user){
+    user.token = token;
+    user.save(function(err, user){
         if(err) return cb(err);
-        cb(null, user)
+        cb(null, user);
     })
 
 }

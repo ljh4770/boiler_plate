@@ -1,12 +1,14 @@
 const express = require('express');
 const app = express();
-const port= 5000
+const port = 5000
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
 const config = require('./config/key');
 const { auth } = require('./middleware/auth');
 
 const { User } = require("./models/User");
+
+// const { application } = require('express');
 
 //application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({extended: true}));
@@ -55,15 +57,15 @@ app.post('/api/users/login', (req, res) => {
     //if email exist, check if password is right.\
     user.comparePassword(req.body.password, (err, isMatch) => {
       if (!isMatch)
-       return res.json({loginSucces: false, message: "비밀번호가 틀렸습니다."})
+       return res.json({loginSuccess: false, message: "비밀번호가 틀렸습니다."})
       //if password match, create token.
-      user.generateToken((err,user) => {"jh47@"
+      user.generateToken((err,user) => {
         if(err) return res.status(400).send(err); //status(400): sign of err
           //saving token(ex: cookie, local, session)
           //cookie
           res.cookie("x-auth", user.token)
           .status(200)
-          .json({loginSucces: true, userId: user._id})
+          .json({loginSuccess: true, userId: user._id})
       }) 
     })
   })

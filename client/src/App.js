@@ -6,9 +6,9 @@ import {
   Link
 } from "react-router-dom";
 
-import LandingPage from './components/views/LandingPage/LandingPage';
-import LoginPage from './components/views/LoginPage/LoginPage';
-import RegisterPage from './components/views/RegisterPage/RegisterPage';
+import LandingPage from "./components/views/LandingPage/LandingPage";
+import LoginPage from "./components/views/LoginPage/LoginPage";
+import RegisterPage from "./components/views/RegisterPage/RegisterPage";
 
 
 function App() {
@@ -26,11 +26,11 @@ function App() {
         changes of react-router-dom Version 6: Switch -> Routes / component -> element
         */
         }
-        
         <Routes>
-          <Route exact path="/" component={LandingPage} />
-          <Route exact path="/login" component={LoginPage} />
-          <Route exact path="/register" component={RegisterPage} />
+          <Route eaxct path="/" element={<LandingPage />} />
+          <Route eaxct path="/login" element={<LoginPage />} />
+          <Route eaxct path="/register" element={<RegisterPage />  } />
+          
         </Routes>
       </div>
     </Router>

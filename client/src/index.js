@@ -4,39 +4,36 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
+//redux module
 import { Provider } from 'react-redux';
 
-import 'antd/dist/antd.css';
-
-import { apllyMiddleware, createStore } from 'redux';
+import { applyMiddleware, createStore } from 'redux';
 import promiseMiddleware from 'redux-promise';
 import ReduxThunk from 'redux-thunk';
 
 import Reducer from './_reducers';
 
-const createStoreWithMiddleware = appleMiddleware()
+const createStoreWithMiddleware = applyMiddleware(promiseMiddleware, ReduxThunk)(createStore);
 
-ReactDOM.render(
-  <Provider
-    store={createStoreWithMiddleware(Reducer,
-      window.__REDUX_DEVTOOLS_EXTENSION__ &&
-      window.__REDUX_DEVTOOLS_EXTENSION__()  
-    )}
-  >
-    <App />
-  </Provider>
-  , document.getElementById('root'));
-
-
-/*
 const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>
-);
-*/
 
+root.render(
+  //react 전용
+  // <React.StrictMode>
+  //   <App />
+  // </React.StrictMode>
+
+
+  //redux 사용
+  <Provider 
+    store = {createStoreWithMiddleware(Reducer,
+      window.__REDUX_DEVTOOLS_EXTENSION__&&
+      window.__REDUX_DEVTOOLS_EXTENSION__()
+      )}
+  >
+      <App />
+  </Provider>
+);
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))
